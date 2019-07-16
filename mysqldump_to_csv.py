@@ -81,7 +81,7 @@ def parse_values(values, outfile):
                 # If we're beginning a new row, eliminate the
                 # opening parentheses.
                 if len(latest_row) == 0:
-                    column = column[1:]
+                    column = column[2:][:-1]
             # Add our column to the row we're working on.
             latest_row.append(column)
         # At the end of an INSERT statement, we'll
