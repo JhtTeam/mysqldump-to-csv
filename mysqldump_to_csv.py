@@ -81,7 +81,17 @@ def parse_values(values, outfile):
                 # If we're beginning a new row, eliminate the
                 # opening parentheses.
                 if len(latest_row) == 0:
-                    column = column[2:][:-1]
+                    start_index = 1
+                    length = len(column)
+                    last_index = length
+                    if column[1] == "'" : 
+                        #this mean the first character is string with '
+                        start_index = 2
+                    if column[length-1:][:length] == "'" :
+                        #this mean the last character is string with '
+                        last_index = -1
+                    #column = column[2:][:-1]
+                    column = column[start_index:][:last_index]
             # Add our column to the row we're working on.
             latest_row.append(column)
         # At the end of an INSERT statement, we'll
