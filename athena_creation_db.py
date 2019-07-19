@@ -34,10 +34,10 @@ for columnName, columnType in columns.items():
     columnCreating += "`{}` {}".format(columnName, columnType)
     if index < len(columns):
         columnCreating += ",\n"
-# print columnCreating
 
 f = open("./athena_sql_creation.txt", "r")
 templateSqlCreation = f.read();
 sqlCreation = templateSqlCreation.format(tableName, columnCreating, tableName)
-f = open("./{}.sql".format(tableName), "w+")
-f.write(sqlCreation)
+sys.stdout.write(sqlCreation)
+# f = open("./{}.sql".format(tableName), "w+")
+# f.write(sqlCreation)
