@@ -1,9 +1,12 @@
 #!/usr/bin/env python
-# -*- coding: UTF-8 -*-
+
+# Convert Db structure to Athena sql creation
+# Usage: cat db_structure.txt | ./athena_creation_db database table > table.sql
 
 import sys
 import fileinput
-tableName = sys.argv[1]
+database = sys.argv[1]
+tableName = sys.argv[2]
 index = 0
 # columns = {}
 columnCreating = ""
@@ -36,5 +39,5 @@ columnCreating = columnCreating[:-2]
 # print columnCreating
 f = open("./athena_sql_creation.txt", "r")
 templateSqlCreation = f.read();
-sqlCreation = templateSqlCreation.format(tableName, columnCreating, tableName)
+sqlCreation = templateSqlCreation.format(tableName, columnCreating, database, tableName)
 sys.stdout.write(sqlCreation)
