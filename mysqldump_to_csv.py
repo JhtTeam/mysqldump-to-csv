@@ -93,6 +93,7 @@ def parse_values(values, outfile):
                     #column = column[2:][:-1]
                     column = column[start_index:][:last_index]
             # Add our column to the row we're working on.
+            column = column.replace(",", " ")
             latest_row.append(column)
         # At the end of an INSERT statement, we'll
         # have the semicolon.
